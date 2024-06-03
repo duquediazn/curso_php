@@ -44,7 +44,6 @@
     $matrizNumeros = [[2,4,6,8], [5,10,15,20], [10,20,30,40]];
     echo count($matrizNumeros); //devuelve 3 
     echo count($matrizNumeros, COUNT_RECURSIVE); //devuelve 15 (12 de cada array interior + 3 del array superior)
-    echo count($matrizNumeros[0]) //devuelve 4
+    echo count($matrizNumeros[0]); //devuelve 4
 
 
-?>

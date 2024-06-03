@@ -11,4 +11,3 @@
 
     /*Constantes predefinidas o reservadas de PHP: 
     https://www.php.net/manual/es/reserved.constants.php */
-?>

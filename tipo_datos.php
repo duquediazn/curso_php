@@ -11,5 +11,5 @@
     /*Php no es case sensitive, es lo mismo poner FALSE que false. 
     Las palabras reservadas se podrán poner en mayúsculas o minúsculas o una combinación de ambas.
     Sin embargo, esto no será cierto para las variables que definamos nosotros. */
+    
 
-?>

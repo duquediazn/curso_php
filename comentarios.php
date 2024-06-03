@@ -6,4 +6,3 @@
     /*Comentario 3
     Multilínea*/
     echo "Hola mundo 3";
-?>

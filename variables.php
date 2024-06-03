@@ -9,5 +9,3 @@
     /*En php existen las siguientes variables predefinidas y por lo tanto están reservadas:
     https://www.php.net/manual/es/reserved.variables.php
      */
-
-?>
