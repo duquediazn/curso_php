@@ -15,7 +15,7 @@
     $numeros = [0,1,2,3,4];
     echo $numeros[3]; //muestra 3
 
-    //Array sociativo: ["clave1"=>"valor1", "clave2"=>"valor2"...]
+    //Array asociativo: ["clave1"=>"valor1", "clave2"=>"valor2"...]
     $tutor =[
         "nombre"=>"Carlos",
         "apellidos"=>"Alfaro", 
