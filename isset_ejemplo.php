@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplo isset. Tabla multiplicar.</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style_isset_ejemplo.css">
 </head>
 <body>
     <h1>Ejemplo Tabla de Multiplicar</h1>
