@@ -18,11 +18,11 @@ session_start();//https://www.php.net/manual/es/function.session-start.php
 <body>
     <form action="login.php" method="post">
         <label>Usuario:
-            <input type="text" name="usuario">
+            <input type="text" name="usuario" pattern="[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ() ]{3,10}" maxlength="10">
         </label>
         <br>
         <label>Contraseña:
-            <input type="password" name="clave">
+            <input type="password" name="clave" pattern="[a-zA-Z0-9$@.-]{4,30}" maxlength="30">
         </label>
         <br><br>
         <button type="submit">Login</button>
