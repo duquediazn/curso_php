@@ -49,6 +49,32 @@
 
     //echo "El promedio es: ".calculo_promedio(10,9,8);
 
+
+    /*
+    Al definir la función, puedes indicar valores por defecto para los argumentos, de forma quecuando hagas una llamada a la función 
+    puedes no indicar el valor de un argumento; en este caso se toma el valor por defecto indicado. 
+    Puede haber valores por defecto definidos para varios argumentos, pero en lalista de argumentos de la función todos ellos deben 
+    estar a la derecha decualquier otro argumento sin valor por defecto.
+    */
+    function precioConIva($precio, $iva=0.18) {
+        return $precio * (1 + $iva);
+    }
+    $precio = 10;
+    $precioIva = precioConIva($precio); //al no especificar tomará el valor 0.18
+    echo "El precio con IVA es $precioIva";
+
+
+    /*
+    A partir de la versión 7.0 de PHP, se puede especificar el tipo de dato que le pasamos a la función y lo que va a devolver la misma.
+    Fíjate en el código siguiente:
+    */
+    function precioConIva2(float $precio) :float{ //con :float especificamos el tipo de dato a devolver
+        return $precio * 1.18;
+    }
+    $precio = 10;
+    $precioIva = precioConIva2($precio);
+    echo  "El precio con IVA es $precioIva";
+
     /*
     Ámbito: 
     Si la variable aparece por primera vez dentro de una función, esa variable es local a la función. 

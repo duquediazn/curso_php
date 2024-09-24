@@ -67,7 +67,7 @@ function fecha_espanol_larga()
     return $fecha_final;
 }
 
-echo fecha_espanol_larga() . "<br>";
+echo fecha_espanol_larga() . "<br>"; //Martes 24 de Septiembre de 2024
 
 
 function fecha_espanol_corta($fecha = "")
@@ -79,7 +79,7 @@ function fecha_espanol_corta($fecha = "")
         $fecha = date("d-m-Y", strtotime($fecha)); //strtotime() convierte una cadena de texto a fecha.
     }
 
-    $fecha = explode("-", $fecha);
+    $fecha = explode("-", $fecha); //https://www.php.net/manual/es/function.explode.php
 
     $fecha_dia = $fecha[0];
     $fecha_mes = $fecha[1];
@@ -115,5 +115,17 @@ function fecha_espanol_corta($fecha = "")
     return $fecha_final;
 }
 
-echo fecha_espanol_corta() . "<br>";
-echo fecha_espanol_corta("01-01-2020") . "<br>";
+echo fecha_espanol_corta() . "<br>"; //24 de Septiembre de 2024
+echo fecha_espanol_corta("01-01-2020") . "<br>"; //01 de Enero de 2020
+
+/*Fecha en español 2 :
+De igual manera para que los días de la semana o el nombre de los meses aparezca en español deberás indicar los "locales" de la siguiente forma:
+setlocale(LC_ALL,'es_ES.UTF-8');
+
+Debes tener en cuenta que la función date() no lee los "locales", para hacer uso de los nombres en español (lunes, enero...)
+deberás usar la función strftime() (DEPRECATED)
+ 
+ https://www.php.net/manual/es/function.setlocale.php
+ https://www.php.net/manual/es/function.strftime.php
+*/
+
