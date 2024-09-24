@@ -45,5 +45,3 @@
     echo count($matrizNumeros); //devuelve 3 
     echo count($matrizNumeros, COUNT_RECURSIVE); //devuelve 15 (12 de cada array interior + 3 del array superior)
     echo count($matrizNumeros[0]); //devuelve 4
-
-
