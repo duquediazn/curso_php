@@ -1,12 +1,30 @@
 <?php
-    //Tipos de datos habituales: boolean, integer, double, string 
+    //Tipos de datos habituales: boolean, integer, double, string, null
     //el médoto var_dump() nos devuelve el tipo de la variable que se le pasa por argumento y su valor o longitud (tipo string).
     var_dump(true); //muestra bool(true)
     var_dump(5); //muestra int(5)
     var_dump(-10.56); //muestra double(-10.5600000000000004973799150320701301097869873046875)
     var_dump("Hola mundo"); //muestra string(10) "Hola mundo"
 
-    #Más sobre var_dump(): https://www.php.net/manual/es/function.var-dump.php
+    /*Más sobre var_dump(): https://www.php.net/manual/es/function.var-dump.php
+    
+    Por otra parte tenemos unas funciones (boolean) para comprobar el tipo de dato como:
+    is_bool(): Comprueba si una variable es de tipo booleano.
+    is_float(): Comprueba si el tipo de una variable es float.
+    is_numeric(): Comprueba si una variable es un número o un string numérico.
+    is_string(): Comprueba si una variable es de tipo string.
+    is_array(): Comprueba si una variable es un array.
+    is_object(): Comprueba si una variable es un objeto.
+    
+    Si realizas una operación con variables de distintos tipos, ambas se convierten primero a un tipo común. 
+    Por ejemplo, si sumas un entero con un real, el entero se convierte a real antes de realizar la suma:
+    $mi_entero = 3;
+    $mi_real = 2.3;
+    $resultado = $mi_entero + $mi_real; //$resultado es real
+
+    También se puede forzar la conversión con un cast: 
+    $resultado = $mi_entero + (int)$mi_real; //$resultado es entero
+    */
 
     /*Php no es case sensitive, es lo mismo poner FALSE que false. 
     Las palabras reservadas se podrán poner en mayúsculas o minúsculas o una combinación de ambas.

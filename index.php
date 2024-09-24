@@ -4,21 +4,32 @@ echo "Hello World! <br>";
 está incrustado en html, cuando solo hay php se puede omitir (y es 
 práctica recomendada hacerlo) 
 
-Para incluir contenido en la página web se puede usar "echo" (void)
-O también se puede usar print (int), solo toma un parámetro y devuelve 1.
-(no son realmente funciones, así que no hacen falta los paréntesis).
+El archivo de configuración de php es php.ini. 
+En él se encuentran algunas de las siguientes directivas: 
 
-printf (print con formato) es otra opción para generar una salida desde PHP. Puede recibir
-varios parámetros, el primero de los cuales es siempre una cadena de texto que indica el
-formato que se ha de aplicar. Esa cadena debe contener un especificador de conversión por
-cada uno de los demás parámetros que se le pasen a la función, y en el mismo orden en
-que figuran en la lista de parámetros.
+short_open_tags: Indica si se pueden utilizar en PHP los delimitadores cortos < ? y ?>. 
+Es preferible nousarlos, pues puede causarnos problemas si utilizamos páginas con
+XML. Para prohibir la utilización de estos delimitadores con PHP le asignamos a esta directiva el valor Off. 
+Por defectosuelen estar a On.
+
+max_execution_time: Permite que puedas ajustar el número máximo de segundos que podrá durar la ejecución de un script PHP. 
+Evita que el servidor se bloquee si se produce algún error en un
+script.
+
+display_errors: Permite visualizar los errores que se produzcan en el código PHP. 
+Para ver el nivel de detalles de los errores mostrados se complementa con la directiva siguiente, los valores recomendados 
+por defecto son: Para un entorno en producción a Off, para un entorno endesarrollo a On. Por defecto suele estar en On.
+
+error_reporting: Indica qué tipo de errores se mostrarán en el caso de que se produzcan. 
+Por ejemplo, si haces error_reporting = E_ALL, te mostrará todos los tipos de errores. 
+Si no quieres que temuestre los avisos pero sí otros tipos de errores, puedes hacer
+error_reporting = E_ALL & ~E_NOTICE.
+
+file_uploads: Indica si se pueden o no subir ficheros al servidor por HTTP.
+
+upload_max_filesize: En caso de que se puedan subir ficheros por HTTP, puedes indicar el límitemáximo permitido para el tamaño 
+de cada archivo. Por ejemplo, upload_max_filesize = 1M
+
+post_max_size: Complementa la directiva anterior, establece el tamaño máximo de un archivo subidopor POST. 
+Por ejemplo, post_max_size = 1M.
  */
-$modulo = "DWES";
-$ciclo = "DAW";
-
-print "<p>";
-printf("%s es un módulo de %d curso de %s", $modulo, 2, $ciclo);
-print "</p>";
-
-//https://www.php.net/manual/es/function.printf.php
