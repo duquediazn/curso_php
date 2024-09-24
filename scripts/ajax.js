@@ -18,7 +18,7 @@ fetch con la configuración especificada, como el método (GET o POST) y la URL 
 function enviar_formulario_ajax(e) {
     e.preventDefault();
 
-    const enviar = confirm("¿Seguro que quieres enviar el formualario?");
+    const enviar = confirm("¿Seguro que quieres enviar el formulario?");
 
     if (enviar == true) {
         const data = new FormData(this);
