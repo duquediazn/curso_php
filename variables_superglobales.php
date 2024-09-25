@@ -17,6 +17,6 @@ respectivamente los métodos GET, POST y Cookies.
 - $_ENV: contiene las variables que se puedan haber pasado a PHP desde el entorno en que se ejecuta.
 - $_FILES: contiene los ficheros que se puedan haber subido al servidor utilizando el método POST
 - $_SESSION: contiene las variables de sesión disponibles para el guion actual.
-- $GLOBALS: Es un array asociativo que contiene las referencias a todas la variablesque están definidas 
+- $GLOBALS: Es un array asociativo que contiene las referencias a todas la variables que están definidas 
 en el ámbito global del script. Los nombres de las variables son las claves del array.
 */
