@@ -6,7 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar formularios con GET y POST</title>
 </head>
-
+<!-- 
+El atributo action del elemento FORM indica la página a la que se le enviarán los datos del formulario. 
+En nuestro caso se tratará de un script PHP. Por su parte, el atributo method especifica el método usado 
+para enviar la información. Este atributo puede tener dos valores:
+    - GET: con este método los datos del formulario se agregan al URI utilizando un signo deinterrogación 
+    "?" como separador, si hay varios se separan por "&".
+    - POST: con este método los datos se incluyen en el cuerpo del formulario y se envíanutilizando el 
+    protocolo HTML.
+-->  
 <body>
     <h1>Método POST</h1>
     <form action="index_post.php" method="post">

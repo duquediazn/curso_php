@@ -129,3 +129,9 @@ deberás usar la función strftime() (DEPRECATED)
  https://www.php.net/manual/es/function.strftime.php
 */
 
+/*
+Validar una fecha: https://www.php.net/manual/es/function.checkdate.php
+*/
+
+echo var_dump(checkdate(12, 31, 2000)); //true
+echo  var_dump(checkdate(2, 29, 2001)); //false
