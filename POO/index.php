@@ -1,9 +1,41 @@
 <?php
-require_once "Saiyajin.php"; //No hace falta si ya lo incluimos en la clase que hereda de ella
-require_once "SuperSaiyajin.php";
+/* 
+require_once "Traits/TecnicasSimples.php";
+require_once "Traits/TecnicasEspeciales.php";
+require_once "Traits/TecnicasCombinadas.php";
+require_once "Clases/Saiyajin.php";
+require_once "Otras/Saiyajin.php";
+require_once "Clases/SuperSaiyajin.php"; 
+*/
 
+spl_autoload_register(function($clase): void {//Se ejecuta cuando no se encuentra el archivo de una clase.
+    $nombre_archivo=str_replace('\\','/', $clase).".php";
+    $nombre_archivo=str_replace("POO/", "", $nombre_archivo);
 
-$goku = new Saiyayin("Goku", 1000);
+    if(file_exists($nombre_archivo)) {
+        require_once $nombre_archivo;
+    }
+}); 
+
+/*
+AUTOLOAD
+En lugar de tener que cargar cada una de las clases de nuestra aplicación manualmente, 
+podemos crear un autoloader. Como su nombre indica, el autoloader está destinado a cargar
+de forma automática las cases utilizadas. 
+
+Cada vez que se intenta inicializar una clase y la clase no existe, el nombre de esta clase
+se pasa al autoloader y este es ejecutado. En el autoloader podremos automatizar el proceso
+de carga sin tener que incluir manualmente cada archivo y además nos permite hacer el código
+más rápido, pues sólo se cargarán las clases que efectivamente se utilicen. 
+*/
+
+//Si hacemos:
+use POO\Clases\Saiyajin;
+use POO\Clases\SuperSaiyajin;
+use POO\Otras\Saiyajin as OtroSaiyajin;
+//No tendremos que usar la ruta completa de la clase cuando trabajamos con namespaces.
+
+$goku = new Saiyajin("Goku", 1000);
 echo $goku->Saludar(); //Hola soy Goku
 echo "<br>";
 
@@ -21,7 +53,7 @@ ningún error porque las variables no están tipadas, pero al no respetar
 el orden tendríamos nivel_pelea=Goku y nombre: 1000.
 */
 
-$vegeta = new Saiyayin("Vegeta", 950);
+$vegeta = new Saiyajin("Vegeta", 950);
 echo $vegeta->Saludar("Mi nombre es "); //Mi nombre es Vegeta
 echo "<br>";
 echo $vegeta->NivelDePelea(); //Vegeta tiene un nivel de pela de 950 y pertenece a la clase Saiyajin
@@ -48,3 +80,29 @@ tanto accede a nombre desde la clase padre.
 */
 echo $gohan->Transformacion(); //Gohan NO se transformó en Super Saiyajin
 echo "<br>";
+
+
+echo Saiyajin::$cabello; // :: (operador de resolución, para acceder a miembros estáticos de la clase)
+echo "<br>";
+echo Saiyajin::MostrarColorCabello();
+echo "<br>";
+echo SuperSaiyajin::$cabello;
+echo "<br>";
+echo $gohan->MostrarColorCabello(); //Un método estático sí puede ser accedido desde una instancia.
+
+echo "<br>";
+echo "<br>";
+
+echo $goku->AumentarKi();
+echo "<br>";
+echo $gohan->AumentarVelocidad();
+echo "<br>";
+echo $gohan->UsarKameKameHa();
+echo "<br>";
+
+echo "<br>";
+echo "<br>";
+
+$goten=new OtroSaiyajin("Goten", 1000);
+echo $goten->Saludar();
+
