@@ -48,14 +48,15 @@ https://www.php.net/manual/es/pdo.getattribute.php
 https://www.php.net/manual/es/pdo.setattribute.php
 */
 
+$conProyecto = new PDO($dsn, $user, $pass);
 $version = $conProyecto->getAttribute(PDO::ATTR_SERVER_VERSION);
 echo "Versión: $version";
 
-//Y si quieres por ejemplo que te devuelva todos los nombres de columnas en mayúsculas:
+/*Y si quieres por ejemplo que te devuelva todos los nombres de columnas en mayúsculas:
 
 $version = $conProyecto->setAttribute(PDO::ATTR_CASE, PDO::CASE_UPPER);
 
-/*Y muy importante para controlar los errores tendremos el atributo: ATTR_ERRMODE con los
+Y muy importante para controlar los errores tendremos el atributo: ATTR_ERRMODE con los
 posible valores:
 - ERRMODE_SILENT: El modo por defecto, no muestra errores (se recomienda en entornos
 en producción).
@@ -81,12 +82,11 @@ $registros = $conProyecto->exec('DELETE FROM stocks WHERE unidades=0');
 echo "<p>Se han borrado $registros registros.</p>";
 
 /*Si la consulta genera un conjunto de datos, como es el caso de SELECT, debes utilizar el
-método query, que devuelve un objeto de la clase PDOStatement.*/
+método query, que devuelve un objeto de la clase PDOStatement.
 
 $conProyecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 $resultado = $conProyecto->query("SELECT producto, unidades FROM stock");
 
-/*
 Por defecto PDO trabaja en modo "autocommit", esto es, confirma de forma automática cada
 sentencia que ejecuta el servidor. Para trabajar con transacciones, PDO incorpora tres
 métodos:
@@ -94,7 +94,7 @@ métodos:
 que finalizará cuando ejecutes uno de los dos métodos siguientes.
 - commit. Confirma la transacción actual.
 - rollback. Revierte los cambios llevados a cabo en la transacción actual.
-Una vez ejecutado un commit o un rollback, se volverá al modo de confirmación automática.*/
+Una vez ejecutado un commit o un rollback, se volverá al modo de confirmación automática.
 
 $ok = true;
 $conProyecto->beginTransaction();
@@ -103,7 +103,65 @@ if (!$conProyecto->exec('DELETE FROM stocks WHERE unidades=0')) $ok = false;
 if ($ok) $conProyecto->commit();  // Si todo fue bien confirma los cambios
 else $conProyecto->rollback(); // y si no, los revierte
 
-/*Ten en cuenta que no todos los motores soportan transacciones. Tal es el caso 
+Ten en cuenta que no todos los motores soportan transacciones. Tal es el caso 
 del motor MyISAM de MySQL. En este caso concreto, PDO ejecutará el método
 beginTransaction sin errores, pero naturalmente no será capaz de revertir los cambios si
-fuera necesario ejecutar un rollback.*/
+fuera necesario ejecutar un rollback.
+
+
+Obtención y utilización de conjuntos de resultados
+
+Al igual que con la extensión MySQLi, en PDO tienes varias
+posibilidades para tratar con el conjunto de resultados devuelto por el
+método query. La más utilizada es el método fetch de la clase
+PDOStatement. Este método devuelve un registro del conjunto de
+resultados, o false si ya no quedan registros por recorrer.
+*/
+
+$resultado = $conProyecto->query("SELECT producto, unidades FROM stocks");
+while ($registro = $resultado->fetch()) {
+    echo "Producto " . $registro['producto'] . ": " . $registro['unidades'] . "<br />";
+}
+
+/*
+Por defecto, el método fetch genera y devuelve a partir de cada registro un array con claves
+numéricas y asociativas. Para cambiar su comportamiento, admite un parámetro opcional
+que puede tomar uno de los siguientes valores:
+- PDO::FETCH_ASSOC. Devuelve solo un array asociativo.
+- PDO::FETCH_NUM. Devuelve solo un array con claves numéricas.
+- PDO::FETCH_BOTH. Devuelve un array con claves numéricas
+ y asociativas. Es el
+comportamiento por defecto.
+- PDO::FETCH_OBJ. Devuelve un objeto cuyas propiedades se corresponden con los
+campos del registro.*/
+
+$resultado = $conProyecto->query("SELECT producto, unidades FROM stocks");
+while ($registro = $resultado->fetch(PDO::FETCH_OBJ)) {
+    echo "Producto " . $registro->producto . ": " . $registro->unidades . "<br />";
+}
+
+/*
+- PDO::FETCH_LAZY. Devuelve tanto el objeto como el array con clave dual anterior.
+- PDO::FETCH_BOUND. Devuelve true y asigna los valores del registro a variables, según se
+indique con el método bindColumn. Este método debe ser llamado una vez por cada
+columna, indicando en cada llamada el número de columna (empezando en 1) y la
+variable a asignar.*/
+
+$resultado->bindColumn(1, $producto);
+$resultado->bindColumn(2, $unidades);
+while ($registro = $resultado->fetch(PDO::FETCH_OBJ)) {
+    echo "Producto " . $producto . ": " . $unidades . "<br />";
+}
+
+/*
+También podemos utilizar fecthAll() que te trae todos los datos de golpe, sin abrir ningún
+puntero, almacenándolos en un array. Se recomienda cuando no se esperan demasiados
+resultados, que podrían provocar problemas de memoria al querer guardar de golpe en un
+array muchas filas provenientes de una consulta.
+*/
+
+$resultado = $conProyecto->query("SELECT nombre, nombre_corto FROM productos");
+$registros = $resultado->fetchAll(PDO::FETCH_ASSOC);
+foreach ($registros as $row) {
+    echo "Nombre: " . $row["nombre"] . " - Nombre corto: " . $row["nombre_corto"] . "<br>";
+}
