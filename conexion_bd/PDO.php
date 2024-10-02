@@ -302,16 +302,4 @@ es el caso de PDO, utilizan este modelo de excepciones. En este caso, lo más co
 que la extensión defina sus propios manejadores de errores heredando de la clase Exception
 
 https://www.php.net/manual/es/class.errorexception.php
-
-la clase PDO permitia definir la fórmula que usará cuando se
-produzca un error, utilizando el atributo PDO::ATTR_ERRMODE. Con: 
-- PDO::ERRMODE_EXCEPTION. Cuando se produce un error lanza una excepción utilizando el
-manejador propio PDOException.
-
-Es decir, que si quieres utilizar excepciones con la extensión PDO, debes configurar la
-conexión haciendo:
-
-$conProyecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-Como vimos en el ejemplo anterior.
 */
