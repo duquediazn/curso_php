@@ -114,7 +114,8 @@ Obtención y utilización de conjuntos de resultados
 
 Al igual que con la extensión MySQLi, en PDO tienes varias
 posibilidades para tratar con el conjunto de resultados devuelto por el
-método query. La más utilizada es el método fetch de la clase
+método query, que devuelve un objeto PDOStatement, o false en caso de error. 
+La más utilizada es el método fetch de la clase
 PDOStatement. Este método devuelve un registro del conjunto de
 resultados, o false si ya no quedan registros por recorrer.
 */
