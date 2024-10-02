@@ -23,6 +23,7 @@ $user = "gestor";
 $pass = "secreto";
 $dsn = "mysql:host=$host;dbname=$db";
 $conProyecto = new PDO($dsn, $user, $pass);
+
 //se recomienda guardar los datos(host, user...) en variables porque si estos cambian
 //solo tenemos que actualizar el valor de estas variables
 
@@ -145,7 +146,7 @@ while ($registro = $resultado->fetch(PDO::FETCH_OBJ)) {
 - PDO::FETCH_BOUND. Devuelve true y asigna los valores del registro a variables, según se
 indique con el método bindColumn. Este método debe ser llamado una vez por cada
 columna, indicando en cada llamada el número de columna (empezando en 1) y la
-variable a asignar.*/
+variable a asignar.
 
 $resultado->bindColumn(1, $producto);
 $resultado->bindColumn(2, $unidades);
@@ -153,7 +154,7 @@ while ($registro = $resultado->fetch(PDO::FETCH_OBJ)) {
     echo "Producto " . $producto . ": " . $unidades . "<br />";
 }
 
-/*
+
 También podemos utilizar fecthAll() que te trae todos los datos de golpe, sin abrir ningún
 puntero, almacenándolos en un array. Se recomienda cuando no se esperan demasiados
 resultados, que podrían provocar problemas de memoria al querer guardar de golpe en un
@@ -165,3 +166,152 @@ $registros = $resultado->fetchAll(PDO::FETCH_ASSOC);
 foreach ($registros as $row) {
     echo "Nombre: " . $row["nombre"] . " - Nombre corto: " . $row["nombre_corto"] . "<br>";
 }
+
+/*
+CONSULTAS PREPARADAS
+Para preparar la consulta en el servidor MySQL, deberás utilizar el
+método prepare de la clase PDO. Este método devuelve un objeto de
+la clase PDOStatement. Los parámetros se pueden marcar utilizando
+signos de interrogación 
+
+
+$stmt = $conProyecto->prepare('INSERT INTO familia (cod, nombre) VALUES (?, ?)');
+
+//O también utilizando parámetros con nombre, precediéndolos por el símbolo de dos puntos.
+
+$consulta = $conProyecto->prepare('INSERT INTO familia (cod, nombre) VALUES (:cod, :nombre)');
+
+Antes de ejecutar la consulta hay que asignar un valor a los parámetros utilizando el método
+bindParam de la clase PDOStatement. Si utilizas signos de interrogación para marcar los
+parámetros.
+
+$cod_producto = "TABLET";
+$nombre_producto = "Tablet PC";
+$consulta->bindParam(1, $cod_producto);
+$consulta->bindParam(2, $nombre_producto);
+
+Si utilizas parámetros con nombre, debes indicar ese nombre en la llamada a bindParam.
+
+$nombre = "Monitores";
+$codigo = "MONI";
+
+$consulta->bindParam(":cod", $codigo);
+$consulta->bindParam(":nombre", $nombre);
+
+Tal y como sucedía con la extensión MySQLi, cuando uses bindParam para
+asignar los parámetros de una consulta preparada, deberás usar siempre
+variables como en el ejemplo anterior.
+
+Una vez preparada la consulta y enlazados los parámetros con sus valores, se ejecuta la
+consulta utilizando el método execute.
+
+$consulta->execute();
+
+Todo lo anterior preparado en un bloque try-catch:
+*/
+try {
+    $conProyecto = new PDO($dsn, $user, $pass);
+    $conProyecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $consulta = $conProyecto->prepare('INSERT INTO familias (cod, nombre) VALUES (:cod, :nombre)');
+    $nombre = "Monitores";
+    $codigo = "MONI";
+
+    $consulta->bindParam(":cod", $codigo);
+    $consulta->bindParam(":nombre", $nombre);
+
+    $consulta->execute();
+    echo "Registro insertado correctamente.";
+} catch (PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
+
+/*
+También existe otra forma de pasar valores a los parámetros. Hay un método
+funciona pasando los valores mediante un array, al método execute().
+lazy , que funciona pasando los valores mediante un array, al método execute().
+
+$consulta->execute([ ':cod'=>$codigo, ':nombre'=>$nombre]);
+
+ó:
+
+$parametros = [
+    ':cod'=>$codigo,
+    ':nombre'=>$nombre
+];
+
+$consulta->execute($parametros);
+
+https://www.php.net/manual/es/class.pdostatement.php
+
+ERRORES Y MANEJO DE EXCEPCIONES:
+https://www.php.net/manual/es/errorfunc.constants.php
+
+Para hacer referencia a cada uno de los
+niveles de error, PHP define una serie de constantes.
+Por ejemplo, la constante E_NOTICE hace referencia a avisos que
+pueden indicar un error al ejecutar el guión, y la constante E_ERROR engloba errores fatales
+que provocan que se interrumpa forzosamente la ejecución. 
+
+La configuración inicial de cómo se va a tratar cada error según su nivel se realiza en
+php.ini el fichero de configuración de PHP. Entre los principales parámetros que puedes
+ajustar están:
+- error_reporting. Indica qué tipos de errores se notificarán. Su valor se forma utilizando
+los operadores a nivel de bit para combinar las constantes anteriores. Su valor
+predeterminado es E_ALL & ~E_NOTICE que indica que se notifiquen todos los errores
+(E_ALL) salvo los avisos en tiempo de ejecución (E_NOTICE).
+- display_errors. En su valor por defecto (On), hace que los mensajes se envíen a la
+salida estándar (y por lo tanto se muestren en el navegador). Se debe desactivar (Off)
+en los servidores que no se usan para desarrollo sino para producción.
+
+https://www.php.net/manual/es/errorfunc.configuration.php
+
+Al usar la función error_reporting solo controlas qué tipo de errores va a notificar PHP. A
+veces puede ser suficiente, pero para obtener más control sobre el proceso existe también
+la posibilidad de reemplazar la gestión de los mismos por la que tú definas. Es decir, puedes
+programar una función para que sea la que se ejecuta cada vez que se produce un error. El
+nombre de esa función se indica utilizando set_error_handler y debe tener como mínimo dos
+parámetros obligatorios (el nivel del error y el mensaje descriptivo) y hasta otros tres
+opcionales con información adicional sobre el error (el nombre del fichero en que se
+produce, el número de línea, y un volcado del estado de las variables en ese momento).
+La función restore_error_handler restaura el manejador de errores original de PHP (más
+concretamente, el que se estaba usando antes de la llamada a set_error_handler).
+
+EXEPCIONES:
+A partir de la versión 5 se introdujo en PHP un modelo de
+excepciones similar al existente en otros lenguajes de programación:
+- El código susceptible de producir algún error se introduce en un
+bloque try.
+- Cuando se produce algún error, se lanza una excepción
+utilizando la instrucción throw.
+- Después del bloque try debe haber como mínimo un bloque
+ catch encargado de procesar el error.
+- Si una vez acabado el bloque try no se ha lanzado ninguna excepción, se continúa
+con la ejecución en la línea siguiente al bloque o bloques catch
+
+PHP ofrece una clase base Exception para utilizar como manejador (handler) de
+excepciones. Para lanzar una excepción no es necesario indicar ningún parámetro, aunque
+de forma opcional se puede pasar un mensaje de error. 
+
+Entre los métodos que puedes usar con los objetos de la clase Exception están:
+- getMessage. Devuelve el mensaje, en caso de que se haya puesto alguno.
+- getCode. Devuelve el código de error si existe.
+Las funciones internas de PHP y muchas extensiones como MySQLi usan el sistema de
+errores visto anteriormente. Solo las extensiones más modernas orientadas a objetos, como
+es el caso de PDO, utilizan este modelo de excepciones. En este caso, lo más común es
+que la extensión defina sus propios manejadores de errores heredando de la clase Exception
+
+https://www.php.net/manual/es/class.errorexception.php
+
+la clase PDO permitia definir la fórmula que usará cuando se
+produzca un error, utilizando el atributo PDO::ATTR_ERRMODE. Con: 
+- PDO::ERRMODE_EXCEPTION. Cuando se produce un error lanza una excepción utilizando el
+manejador propio PDOException.
+
+Es decir, que si quieres utilizar excepciones con la extensión PDO, debes configurar la
+conexión haciendo:
+
+$conProyecto->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+Como vimos en el ejemplo anterior.
+*/
