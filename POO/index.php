@@ -8,15 +8,6 @@ require_once "Otras/Saiyajin.php";
 require_once "Clases/SuperSaiyajin.php"; 
 */
 
-spl_autoload_register(function($clase): void {//Se ejecuta cuando no se encuentra el archivo de una clase.
-    $nombre_archivo=str_replace('\\','/', $clase).".php";
-    $nombre_archivo=str_replace("POO/", "", $nombre_archivo);
-
-    if(file_exists($nombre_archivo)) {
-        require_once $nombre_archivo;
-    }
-}); 
-
 /*
 AUTOLOAD
 En lugar de tener que cargar cada una de las clases de nuestra aplicación manualmente, 
@@ -28,6 +19,15 @@ se pasa al autoloader y este es ejecutado. En el autoloader podremos automatizar
 de carga sin tener que incluir manualmente cada archivo y además nos permite hacer el código
 más rápido, pues sólo se cargarán las clases que efectivamente se utilicen. 
 */
+spl_autoload_register(function ($clase): void { //Se ejecuta cuando no se encuentra el archivo de una clase.
+    $nombre_archivo = str_replace('\\', '/', $clase) . ".php";
+    $nombre_archivo = str_replace("POO/", "", $nombre_archivo);
+
+    if (file_exists($nombre_archivo)) {
+        require_once $nombre_archivo;
+    }
+});
+
 
 //Si hacemos:
 use POO\Clases\Saiyajin;
@@ -103,6 +103,5 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 
-$goten=new OtroSaiyajin("Goten", 1000);
+$goten = new OtroSaiyajin("Goten", 1000);
 echo $goten->Saludar();
-
