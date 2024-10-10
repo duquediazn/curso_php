@@ -127,11 +127,16 @@ deberás usar la función strftime() (DEPRECATED)
  
  https://www.php.net/manual/es/function.setlocale.php
  https://www.php.net/manual/es/function.strftime.php
-*/
 
+ Ejemplo:
+*/
+setlocale(LC_ALL, 'es_ES.UTF-8');
+date_default_timezone_set('Europe/Madrid');
+$ahora = new DateTime();
+$fecha = strftime("Tu última visita fué el %A, %d de %B de %Y a las %H:%M:%S hora de Madrid.", date_timestamp_get($ahora));
+echo $fecha . "<br>";
 /*
 Validar una fecha: https://www.php.net/manual/es/function.checkdate.php
 */
-
 echo var_dump(checkdate(12, 31, 2000)); //true
 echo  var_dump(checkdate(2, 29, 2001)); //false
