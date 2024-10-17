@@ -37,6 +37,7 @@ class SuperSaiyajin extends Saiyajin
         return $this->nombre . " aumentó su nivel de pelea a " . $nivel;
     }
     */
+    
 }
 
 
@@ -48,4 +49,45 @@ Diferencias entre this, self y parent: $this hace referencia al objeto actual, $
  
 */
 
+/*
+Funciones de utilidad en la herencia: 
+- get_parent_class(objeto) : Devuelve el nombre de la clase padre del objeto o la clase que se indica.
+- is_subclass_if(objeto, 'Clase') : Devuelve true si el objeto o la clase del primer parámetro tiene como 
+clase base a la que se indica en el segundo parámetro o false en caso contrario. 
+*/
 
+/*
+Existe una forma de evitar que las clases heredadas puedan redefinir el comportamiento de los
+métodos existentes en la superclase: utilizar la palabra final.
+Incluso se puede declarar una clase utilizando final. 
+En este caso no se podrían crearclases heredadas utilizándola como base
+*/
+
+/*
+Opuestamente al modificador final, existe también abstract. 
+Se utiliza de la misma forma,tanto con métodos como con clases completas, 
+pero en lugar de prohibir la herencia, obligaa que se herede. 
+Es decir, una clase con el modificador abstract no puede tener objetos quela instancien, 
+pero sí podrá utilizarse de clase base y sus subclases sí podrán utilizarse parainstanciar 
+objetos.
+
+Y un método en el que se indique abstract, debe ser redefinido obligatoriamente por las
+subclases, y no podrá contener código.
+
+class Producto {
+
+    abstract public function muestra();
+}
+*/
+
+/*
+Obviamente puedes definir un nuevo constructor paralas clases heredadas que redefinan 
+el comportamiento del que existe en la clase base, tal ycomo harías con cualquier otro método.
+Y dependiendo de si programas o no el constructor en la clase heredada, se llamará o no 
+automáticamente al constructor de la clase base.
+En PHP, si la clase heredada no tiene constructor propio, se llamará automáticamente 
+al constructor de la clase base (si existe). Sin embargo, si la clase heredada define su 
+propio constructor, deberás ser tú el que realice la llamada al constructor de la clase 
+base si loconsideras necesario, utilizando para ello la palabra
+parent y el operador de resolución de ámbito.
+*/
