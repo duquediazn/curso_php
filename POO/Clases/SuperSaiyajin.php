@@ -3,7 +3,8 @@
 namespace POO\Clases;
 //require_once "Saiyajin.php";
 
-//En PHP no existe la herencia múltiple.
+/*En PHP no existe la herencia múltiple, la sobrecarga de métodos (incluidos los métodos constructores) 
+ni la sobrecarga de operadores.*/
 class SuperSaiyajin extends Saiyajin
 {
 
@@ -40,10 +41,11 @@ class SuperSaiyajin extends Saiyajin
 
 
 /*
-Diferencias entre this, self y parent:
+Diferencias entre this, self y parent: $this hace referencia al objeto actual, $self, a la clase actual.
     -this, hace referencia a los atributos NO ESTÁTICOS de la clase.
     -self, hace referencia a los atributos ESTÁTICOS de la clase.
     -parent, hace referencia a los atributos NO ESTÁTICOS de la clase padre o superclase.
+ 
 */
 
 

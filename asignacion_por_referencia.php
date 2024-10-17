@@ -1,4 +1,5 @@
 <?php
+    //https://www.php.net/manual/es/language.references.php
     $texto="El Salvador";
 
     $variable1=$texto; //Asignación por copia
