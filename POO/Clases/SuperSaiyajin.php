@@ -5,6 +5,7 @@ namespace POO\Clases;
 
 /*En PHP no existe la herencia múltiple, la sobrecarga de métodos (incluidos los métodos constructores) 
 ni la sobrecarga de operadores.*/
+
 class SuperSaiyajin extends Saiyajin
 {
 
@@ -22,11 +23,13 @@ class SuperSaiyajin extends Saiyajin
 
         return $texto;
     }
-    public static function MostrarColorCabello(): string {
-        return "Tengo el cabello de color ".self::$cabello; 
+    public static function MostrarColorCabello(): string
+    {
+        return "Tengo el cabello de color " . self::$cabello;
     }
 
-    public static function NuevoMetodo(){
+    public static function NuevoMetodo()
+    {
         return parent::VELOCIDAD; //Accede a al atributo constante VELOCIDAD del padre
     }
 
@@ -37,12 +40,11 @@ class SuperSaiyajin extends Saiyajin
         return $this->nombre . " aumentó su nivel de pelea a " . $nivel;
     }
     */
-    
 }
 
 
 /*
-Diferencias entre this, self y parent: $this hace referencia al objeto actual, $self, a la clase actual.
+Diferencias entre this, self y parent: $this hace referencia al objeto actual, self, a la clase actual.
     -this, hace referencia a los atributos NO ESTÁTICOS de la clase.
     -self, hace referencia a los atributos ESTÁTICOS de la clase.
     -parent, hace referencia a los atributos NO ESTÁTICOS de la clase padre o superclase.
