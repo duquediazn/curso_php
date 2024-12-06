@@ -118,29 +118,6 @@ function fecha_espanol_corta($fecha = "")
 echo fecha_espanol_corta() . "<br>"; //24 de Septiembre de 2024
 echo fecha_espanol_corta("01-01-2020") . "<br>"; //01 de Enero de 2020
 
-/*Fecha en español 2 :
-De igual manera para que los días de la semana o el nombre de los meses aparezca en español deberás indicar los "locales" de la siguiente forma:
-setlocale(LC_ALL,'es_ES.UTF-8');
-
-Debes tener en cuenta que la función date() no lee los "locales", para hacer uso de los nombres en español (lunes, enero...)
-deberás usar la función strftime() (DEPRECATED)
- 
- https://www.php.net/manual/es/function.setlocale.php
- https://www.php.net/manual/es/function.strftime.php
-
- Ejemplo:
-*/
-setlocale(LC_ALL, 'es_ES.UTF-8');
-date_default_timezone_set('Europe/Madrid');
-$ahora = new DateTime();
-$fecha = strftime("Tu última visita fué el %A, %d de %B de %Y a las %H:%M:%S hora de Madrid.", date_timestamp_get($ahora));
-echo $fecha . "<br>";
-
-//La manera actual de realizar el ejercicio anterior requeriría de crear tus propias funciones para manejar la fecha en español, como arriba trabajando con date().
-//Para el formato en vez de strftime, se puede usar el método format():
-$date = new DateTime();
-$date->format('D, d M Y H:i:s');
-
 /*
 Validar una fecha: https://www.php.net/manual/es/function.checkdate.php
 */
