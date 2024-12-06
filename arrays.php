@@ -1,6 +1,6 @@
 <?php
     /*Los arrays en php son mapas de datos ordenados o arrays asociativos (valor-clave). 
-    Pueden almacenar distintos tipos de datos (como para son los arrays en javascipt).
+    Pueden almacenar distintos tipos de datos (como los arrays en javascipt).
     Por lo tanto soporta tanto arrays escalares (índice numérico), como asociativos, como arrays multidimensionales.
     
     Podemos definir un array utilizando el constructor array() */
