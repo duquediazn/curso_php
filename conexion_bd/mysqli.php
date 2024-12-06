@@ -4,14 +4,14 @@ ABRIR CONEXIONES DE DATOS UTILIZANDO MYSQLI:
 https://www.php.net/manual/es/book.mysqli.php
 
 // utilizando el constructor de la clase
-$conProyecto = new mysqli('localhost','gestor', 'proyecto', 'secreto');
+$conProyecto = new mysqli('localhost','admin_db', 'proyecto_db', 'secreto');
 
 // utilizando el método connect
 $conProyecto = new mysqli();
-$conProyecto->connect('localhost', 'gestor', 'secreto', 'proyecto');
+$conProyecto->connect('localhost', 'admin_db', 'secreto', 'proyecto_db');
 
 // utilizando llamadas a funciones
-$conProyecto = mysqli_connect('localhost', 'gestor', 'secreto', 'proyecto');
+$conProyecto = mysqli_connect('localhost', 'admin_db', 'secreto', 'proyecto_db');
 */
 /*
 Para comprobar el error, en caso de que se produzca, puedes usar las siguientes propiedades (o funciones
@@ -23,9 +23,9 @@ equivalentes) de la clase mysqli:
 no se produce ningún error.
 
 El siguiente código comprueba el establecimiento de una conexión con la base
-de datos "proyecto" y finaliza la ejecución si se produce algún error:
+de datos "proyecto_db" y finaliza la ejecución si se produce algún error:
 
-@$conProyecto = new mysqli('localhost', 'gestor', 'secreto', 'proyecto');
+@$conProyecto = new mysqli('localhost', 'admin_db', 'secreto', 'proyecto_db');
 $error = $conProyecto->connect_errno;
 if ($error != 0) {
     echo "<p>Error $error conectando a la base de datos: $conProyecto->connect_error</p>";
@@ -58,7 +58,7 @@ El número de registros afectados se puede obtener con la propiedad
 affected_rows (o con la función mysqli_affected_rows).
 */
 
-$conProyecto = new mysqli('localhost', 'gestor', 'secreto', 'proyecto');
+$conProyecto = new mysqli('localhost', 'admin_db', 'secreto', 'proyecto_db');
 
 // Verificamos la conexión
 if ($conProyecto->connect_errno) {

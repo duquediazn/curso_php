@@ -3,7 +3,7 @@
 //Para saber si una variable es nula: 
 $numero=9;
 
-unset($numero); //Eliminamos el valor de una variable -> $numero=null
+//unset($numero); //Eliminamos el valor de una variable -> $numero=null
 
 if(is_null($numero)) { //Si la variable es nula devuelve true. 
     echo "Es nula";

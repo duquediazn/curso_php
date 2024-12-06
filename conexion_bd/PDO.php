@@ -18,8 +18,8 @@ dirección IP del servidor y el nombre de la base de datos.
 */
 
 $host = "localhost";
-$db = "proyecto";
-$user = "gestor";
+$db = "proyecto_db";
+$user = "admin_db";
 $pass = "secreto";
 $dsn = "mysql:host=$host;dbname=$db";
 $conProyecto = new PDO($dsn, $user, $pass);
