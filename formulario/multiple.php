@@ -10,7 +10,9 @@ foreach($_POST['asignatura'] as $asignatura) {
 
 echo "<br>";
 
-$frutas=$_POST['frutas'];
-foreach($frutas as $fruta) {
-    echo $fruta."<br>";
+$frutas=$_POST['frutas'] ?? null;
+if ($frutas !== null) {
+    foreach($frutas as $fruta) {
+        echo $fruta."<br>";
+    }
 }

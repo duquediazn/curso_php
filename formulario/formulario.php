@@ -12,12 +12,13 @@ En nuestro caso se tratará de un script PHP. Por su parte, el atributo method e
 para enviar la información. Este atributo puede tener dos valores:
     - GET: con este método los datos del formulario se agregan al URI utilizando un signo deinterrogación 
     "?" como separador, si hay varios se separan por "&".
-    - POST: con este método los datos se incluyen en el cuerpo del formulario y se envíanutilizando el 
+    - POST: con este método los datos se incluyen en el cuerpo del formulario y se envían utilizando el 
     protocolo HTML.
 -->  
 <body>
+<!--Formulario POST-->
     <h1>Método POST</h1>
-    <form action="index_post.php" method="post">
+    <form action="post.php" method="post">
         <div>
             <label for="nombre">Nombre: </label>
             <input type="text" id="nombre" name="nombre" required>
@@ -44,8 +45,9 @@ para enviar la información. Este atributo puede tener dos valores:
         <button>Enviar</button>
     </form>
     <br>
+<!--Formulario GET-->
     <h1>Método GET</h1>
-    <form action="index_get.php" method="get">
+    <form action="get.php" method="get">
         <div>
             <label for="nombre">Nombre: </label>
             <input type="text" id="nombre" name="nombre" required>
@@ -71,9 +73,9 @@ para enviar la información. Este atributo puede tener dos valores:
 
         <button>Enviar</button>
     </form>
-
+<!--Selección múltiple-->
     <h1>Selección múltiple</h1>
-    <form action="index_multiple.php" method="post">
+    <form action="multiple.php" method="post">
         <label for="asignatura">Asignatura: </label>
         <!-- En el name, indicamos que será un array "[]" y añadimos el atributo "multiple"-->
         <select name="asignatura[]" id="asignatura" multiple>

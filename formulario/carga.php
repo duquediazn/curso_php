@@ -1,7 +1,7 @@
 <?php   
 
 /* 
-Los datos de tipo file enviados por el formulario através del array global $_FILES, éste contendrá toda la información
+Los datos de tipo file son enviados por el formulario a través del array global $_FILES, éste contendrá toda la información
 de los ficheros subidos. Los valores de este array serán: 
     $_FILES['fichero']['name'] // El nombre original del fichero en la máquina del cliente.
     $_FILES['fichero']['tmp_name'] // El nombre temporal del fichero en el cual se almacena el fichero subido en el servidor.

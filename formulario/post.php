@@ -4,7 +4,7 @@ echo "Método POST: " . "<br>";
 
 $nombre = $_POST['nombre'];
 $asignatura = $_POST['asignatura'];
-$frutas = $_POST['frutas'];
+$frutas = $_POST['frutas'] ?? null;
 
 echo "Nombre alumno: " . $nombre . "<br>";
 echo "Asignatura: " . $asignatura . "<br>";
