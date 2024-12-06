@@ -135,8 +135,15 @@ date_default_timezone_set('Europe/Madrid');
 $ahora = new DateTime();
 $fecha = strftime("Tu última visita fué el %A, %d de %B de %Y a las %H:%M:%S hora de Madrid.", date_timestamp_get($ahora));
 echo $fecha . "<br>";
+
+//La manera actual de realizar el ejercicio anterior requeriría de crear tus propias funciones para manejar la fecha en español, como arriba trabajando con date().
+//Para el formato en vez de strftime, se puede usar el método format():
+$date = new DateTime();
+$date->format('D, d M Y H:i:s');
+
 /*
 Validar una fecha: https://www.php.net/manual/es/function.checkdate.php
 */
 echo var_dump(checkdate(12, 31, 2000)); //true
 echo  var_dump(checkdate(2, 29, 2001)); //false
+

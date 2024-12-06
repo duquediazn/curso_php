@@ -8,7 +8,7 @@ https://www.php.net/manual/es/language.variables.superglobals.php
     $_SERVER['SERVER_ADDR'] : dirección IP del servidor web.
     $_SERVER['SERVER_NAME'] : nombre del servidor web.
     $_SERVER['DOCUMENT_ROOT'] : directorio raíz bajo el que se ejecuta el guión actual.
-    $_SERVER['REMOTE_ADDR'] : dirección IP desde la que el usuario está viendo lapágina.
+    $_SERVER['REMOTE_ADDR'] : dirección IP desde la que el usuario está viendo la página.
     $_SERVER['REQUEST_METHOD'] : método utilizado para acceder a la página ('GET','HEAD','POST'o'PUT')
     
 - $_GET, $_POST y $_COOKIE: contienen las variables que se han pasado al guión actual utilizando 

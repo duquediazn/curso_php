@@ -7,4 +7,4 @@
     Módulo: %
     */
     $resultado=10+10*2+3**3-10/2; 
-    echo $resultado; //57
+    echo $resultado; //52

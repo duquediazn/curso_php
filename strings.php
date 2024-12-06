@@ -29,13 +29,13 @@
     echo 'Mi nombre es $nombre'; //Muestra: Mi nombre es $nombre
     echo '<br>';
    /* Cuando se usan comillas simples, sólo se realizan dos sustituciones dentro de la cadena:
-        1.- Cuando se encuentra la secuencia de caracteres \', se muestra en la salida unacomilla simple.
+        1.- Cuando se encuentra la secuencia de caracteres \', se muestra en la salida una comilla simple.
         2.- Cuando se encuentra la secuencia \\, se muestra en la salida una barra invertida.
 
 
     En PHP tienes otra alternativa para crear cadenas: la sintaxis heredoc  . Consiste en ponerel operador
-    "<<<" seguido de un identificador de tu elección, y a continuación y empezandoen la línea siguiente la 
-    cadena de texto, sin utilizar comillas. La cadena finaliza cuando escribes ese mismo identificador en una 
+    "<<<" seguido de un identificador de tu elección, y a continuación y empezando en la línea siguiente, la 
+    cadena de texto sin utilizar comillas. La cadena finaliza cuando escribes ese mismo identificador en una 
     nueva línea. Esta línea de cierre no debe llevar más caracteres, ni siquiera espacios o sangría, 
     salvo quizás un punto y coma después del identificador.
     */

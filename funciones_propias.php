@@ -4,7 +4,7 @@
     Éstas pueden recibir parámetros y realizar todo tipo de tareas, ya sean complejas o sencillas.
 
     Un nombre de función válido comienza con una letra o guión bajo, seguido de cualquier 
-    número de letras, números o guiones bajos.a
+    número de letras, números o guiones bajos.
 
     Sintaxis:
 
@@ -51,10 +51,10 @@
 
 
     /*
-    Al definir la función, puedes indicar valores por defecto para los argumentos, de forma quecuando hagas una llamada a la función 
+    Al definir la función, puedes indicar valores por defecto para los argumentos, de forma que cuando hagas una llamada a la función 
     puedes no indicar el valor de un argumento; en este caso se toma el valor por defecto indicado. 
-    Puede haber valores por defecto definidos para varios argumentos, pero en lalista de argumentos de la función todos ellos deben 
-    estar a la derecha decualquier otro argumento sin valor por defecto.
+    Puede haber valores por defecto definidos para varios argumentos, pero en la lista de argumentos de la función todos ellos deben 
+    estar a la derecha de cualquier otro argumento sin valor por defecto.
     */
     function precioConIva($precio, $iva=0.18) {
         return $precio * (1 + $iva);
@@ -86,7 +86,7 @@
         $b = $a; //$b vale null
     }
 
-    Si en una función quisieras utilizar la variable una variable externa, podrías hacerlo utilizando 
+    Si en una función quisieras utilizar una variable externa, podrías hacerlo utilizando 
     la palabra global delante de la variable dentro de la función. De esta forma le dices a PHP que no 
     cree una nueva variable local, sino que utilice la ya existente.
 

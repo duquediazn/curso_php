@@ -39,7 +39,7 @@ foreach (hash_algos() as $algoritmos) {
 /*
 Manera recomendada de encriptar claves: 
 
-password.hash() : https://www.php.net/manual/es/function.password-hash.php
+password_hash() : https://www.php.net/manual/es/function.password-hash.php
 Paŕametros: 
 1:string a procesar,
 2:algoritmo: PASSWORD_DEFAULT o PASSWORD_BCRYPT 
@@ -61,8 +61,5 @@ parámetros:
 
 https://www.php.net/manual/es/function.password-verify.php
 */
-if (password_verify($clave, $clave_procesada)) {
-    echo "Las claven coinciden";
-} else {
-    echo "Las claves no coinciden";
-}
+
+echo password_verify($clave, $clave_procesada) ? "Las claves coinciden" : "Las claves no coinciden";

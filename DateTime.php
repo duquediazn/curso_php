@@ -5,7 +5,12 @@
 
 $fechaMySql="2020-12-31";
 $fecha1= new DateTime($fechaMySql);
-echo var_dump($fecha1);
+echo var_dump($fecha1); //object(DateTime)#1 (3) { ["date"]=> string(26) "2020-12-31 00:00:00.000000" ["timezone_type"]=> int(3) ["timezone"]=> string(13) "Europe/Berlin" }
+
+//new DateTime(); //Crea un objeto con la fecha del sistema (hora peninsular).
+echo "<br>";
+//Para poner la zona horaria correcta:
+echo  var_dump(new DateTime("now", new DateTimeZone("Europe/London")));
 
 //Ejemplo 2.- Pasar la fecha al formato que queramos: 
 

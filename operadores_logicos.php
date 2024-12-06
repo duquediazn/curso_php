@@ -1,7 +1,7 @@
 <?php
     /*Funcionan como otros lenguajes:
-    and
-    or
+    and (o AND)
+    or (u OR)
     ! (not)
     && (and)
     || (or)
