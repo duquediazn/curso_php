@@ -229,8 +229,7 @@ try {
 
 /*
 También existe otra forma de pasar valores a los parámetros. Hay un método
-funciona pasando los valores mediante un array, al método execute().
-lazy , que funciona pasando los valores mediante un array, al método execute().
+funciona pasando los valores mediante un array al método execute():
 
 $consulta->execute([ ':cod'=>$codigo, ':nombre'=>$nombre]);
 
