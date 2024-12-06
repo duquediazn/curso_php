@@ -39,4 +39,4 @@ cascade on delete cascade
 -- 3.- Creamos un usuario
 create user admin_db@'localhost' identified by "secreto";
 -- 4.- Le damos permiso en la base de datos "proyecto_db"
-grant all on proyecto_db.* to admin_dbr@'localhost';
+grant all on proyecto_db.* to admin_db@'localhost';

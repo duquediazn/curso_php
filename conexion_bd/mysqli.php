@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 /*
 ABRIR CONEXIONES DE DATOS UTILIZANDO MYSQLI:
 https://www.php.net/manual/es/book.mysqli.php
@@ -294,7 +297,7 @@ $stmt=$conProyecto->stmt_init();
 
 $cod=1;
 
-$consulta="select nombre from productos where id=?";
+$consultado="select nombre from productos where id=?";
 
 if(!($stmt->prepare($consulta))){
     echo "Se ha producido un error: " . $conProyecto->error();
