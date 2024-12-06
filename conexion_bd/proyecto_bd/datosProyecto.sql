@@ -1,5 +1,5 @@
--- Datos para las tablas de la base de datos proyecto_db
-use proyecto_db;
+-- Datos para las tablas de la base de datos proyecto
+use proyecto;
 
 -- Tabla familias
 INSERT INTO

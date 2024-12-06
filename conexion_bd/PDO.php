@@ -18,7 +18,7 @@ dirección IP del servidor y el nombre de la base de datos.
 */
 
 $host = "localhost";
-$db = "proyecto_db";
+$db = "proyecto";
 $user = "admin_db";
 $pass = "secreto";
 $dsn = "mysql:host=$host;dbname=$db";

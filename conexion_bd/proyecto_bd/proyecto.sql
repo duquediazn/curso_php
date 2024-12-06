@@ -1,7 +1,7 @@
 -- 1.- Creamos la Base de Datos
-create database proyecto_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
--- Seleccionamos la base de datos "proyecto_db"
-use proyecto_db;
+create database proyecto DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- Seleccionamos la base de datos "proyecto"
+use proyecto;
 -- 2.- Creamos las tablas
 -- 2.1.1.- Tabla tienda
 create table if not exists tiendas(
@@ -38,5 +38,5 @@ cascade on delete cascade
 );
 -- 3.- Creamos un usuario
 create user admin_db@'localhost' identified by "secreto";
--- 4.- Le damos permiso en la base de datos "proyecto_db"
-grant all on proyecto_db.* to admin_db@'localhost';
+-- 4.- Le damos permiso en la base de datos "proyecto"
+grant all on proyecto.* to admin_db@'localhost';
