@@ -20,6 +20,7 @@ En el mundo de PHP, los espacios de nombres están diseñados para solucionar do
 Creación de clases: 
 Es preferible que cada clase figure en su propio fichero y que su nombre comience por mayúscula.
  */
+
 class Saiyajin
 {
     //use TecnicasSimples, TecnicasEspeciales; //Para agregar un trait
@@ -27,19 +28,19 @@ class Saiyajin
 
     /* use TecnicasSimples, TecnicasEspeciales { //Para cambiar la visibilidad de un trait
         UsarKameKameHa as private;
-    } */ 
+    } */
 
     private string $nombre; //En las clases podemos tipar los miembros
     private int $nivel_pelea;
     public string $clase = "Saiyajin";
     public static $cabello = "Negro";
-    const VELOCIDAD ="Normal"; 
+    const VELOCIDAD = "Normal";
     /*
     Las constantes no usan el carácter $ y, además, su valor va siempre entre comillas y está asociado a la clase, 
     es decir, no existe una copia del mismo en cada objeto. Por tanto, para acceder a las constantes de una clase, 
     se debe utilizar el nombre de la clase y el operador ::, llamado operador de resolución de ámbito
     */
-    
+
     /*El encapsulamiento o visibilidad de miembros en PHP funciona como en la mayoría de lenguajes de programación: 
         public: Acceso universal
         protected: Misma clase y clases que heredan
@@ -72,7 +73,38 @@ class Saiyajin
     }
 
     Con el uso de las funciones "func_get_args()", "fun_get_arg()" y "func_num_arg()", podemos pasar distinto número de parámetros 
-    a un constructor "simulando" la sobrecarga del mismo. Otra posibilidad es usar el método mágico "__call" para capturar llamadas 
+    a un constructor "simulando" la sobrecarga del mismo. 
+    
+    class Persona {
+        private $nombre;
+        private $perfil;
+        public function __construct() {
+            $num = func_num_args(); //guardamos el número de argumentos
+            switch ($num) {
+                case 0:
+                    break;
+                case 1:
+                    //recuperamos el argumento pasado
+                    $this->nombre = func_get_arg(0); // los argumentos empiezan a contar por 0
+                    break;
+                case 2:
+                    $this->nombre = func_get_arg(0);
+                    $this->perfil = func_get_arg(1);
+            }
+        }
+    }
+    //Ahora será válido el siguiente código.
+    $persona1 = new Persona();
+    $persona2 = new Persona("Alicia");
+    $persona3 = new Persona("Alicia", "Público");
+    var_dump($persona1);
+    echo "<break>";
+    var_dump($persona2);
+    echo "<break>";
+    var_dump($persona3);
+    
+    S
+    Otra posibilidad es usar el método mágico "__call" para capturar llamadas 
     a métodos que no estén implementados.
 
     También es posible definir un método destructor, que debe llamarse "__destruct" y permite
@@ -91,8 +123,9 @@ class Saiyajin
         }
     }
     */
-    public static function MostrarColorCabello(): string {
-        return "Tengo el cabello de color ".self::$cabello; //Un médoto estático puede acceder a un atributo estático, 
+    public static function MostrarColorCabello(): string
+    {
+        return "Tengo el cabello de color " . self::$cabello; //Un médoto estático puede acceder a un atributo estático, 
         //pero necesitamos referenciarlo con "self", en vez de "this", o, como se accede normalmente a un atributo estático: 
         //Saiyajin::$cabello.
     }
@@ -136,7 +169,7 @@ Métodos mágicos:
 https://www.php.net/manual/es/language.oop5.magic.php
 
 En PHP5 se introdujeron los llamados métodos mágicos, entre ellos __set y __get. 
-Si se declaran estos dos métodos en una clase, PHP los invocaautomáticamente cuando 
+Si se declaran estos dos métodos en una clase, PHP los invoca automáticamente cuando 
 desde un objeto se intenta usar un atributo noexistente o no accesible. 
 
 Por ejemplo, el código siguiente simula que la claseProducto tiene cualquier atributo 
