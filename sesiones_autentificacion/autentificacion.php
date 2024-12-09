@@ -11,7 +11,7 @@ puedes hacer:
 
 sudo htpasswd -c proyecto.pass gestor
 
-e introducir la contraseña correspondiente a ese usuario.
+e introducir la contraseña correspondiente a ese usuario a continuación.
 
 La opción "–c" indica que se debe crear el fichero, por lo que solo deberás usarla cuando
 introduzcas el primer usuario y contraseña. Fíjate que en el ejemplo anterior, el fichero
