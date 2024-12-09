@@ -15,7 +15,8 @@ e introducir la contraseña correspondiente a ese usuario a continuación.
 
 La opción "–c" indica que se debe crear el fichero, por lo que solo deberás usarla cuando
 introduzcas el primer usuario y contraseña. Fíjate que en el ejemplo anterior, el fichero
-"proyecto.pass" se crea en la ruta "/etc/apache2/users", que en principio no es accesible vía
+"proyecto.pass" se crea en la ruta en la que te encuentres. Lo idea sería crear el directorio
+"users" dentro de "/etc/apache2", que en principio no es accesible vía
 web.
 
 Para indicarle al servidor Apache qué recursos tienen acceso restringido, una opción es crear
