@@ -1,11 +1,10 @@
 <?php 
 /*
-En el servidor web Apache, el que has estado usando en anteriores unidades, existe una
-utilidad en línea de comandos, htpasswd, que permite almacenar en un fichero una lista de
-usuarios y sus respectivas contraseñas. La información relativa a las contraseñas se
-almacena cifrada; aun así, es conveniente crear este fichero en un lugar no accesible por
-los usuarios del servidor web. Puedes tener información de este comando y sus opciones
-escribiendo en la terminal "htpasswd --help".
+En el servidor web Apache, existe una utilidad en línea de comandos, htpasswd, 
+que permite almacenar en un fichero una lista de usuarios y sus respectivas contraseñas. 
+La información relativa a las contraseñas se almacena cifrada; aun así, es conveniente 
+crear este fichero en un lugar no accesible por los usuarios del servidor web. 
+Puedes tener información de este comando y sus opciones escribiendo en la terminal "htpasswd --help".
 
 Por ejemplo, para crear el fichero de usuarios "proyecto.pass" y añadirle el usuario "gestor",
 puedes hacer:
