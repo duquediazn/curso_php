@@ -48,7 +48,7 @@ class Saiyajin
     */
 
     /*Propiedades y médotos estáticos
-    Como en otros POO, declarar propiedades o métodos estáticos los hacen accesibles sin la necesidad de instanciar la clase. 
+    Como en otros lenguajes POO, declarar propiedades o métodos estáticos los hacen accesibles sin la necesidad de instanciar la clase. 
     - Una propiedad o método estático siempre tendrá que ser public
     - Una propiedad declarada como static no puede ser accedida con un objeto de clase instanciado (aunque un método estático sí 
     lo puede hacer) 
@@ -103,7 +103,7 @@ class Saiyajin
     echo "<break>";
     var_dump($persona3);
     
-    S
+    
     Otra posibilidad es usar el método mágico "__call" para capturar llamadas 
     a métodos que no estén implementados.
 
@@ -170,9 +170,9 @@ https://www.php.net/manual/es/language.oop5.magic.php
 
 En PHP5 se introdujeron los llamados métodos mágicos, entre ellos __set y __get. 
 Si se declaran estos dos métodos en una clase, PHP los invoca automáticamente cuando 
-desde un objeto se intenta usar un atributo noexistente o no accesible. 
+desde un objeto se intenta usar un atributo no existente o no accesible. 
 
-Por ejemplo, el código siguiente simula que la claseProducto tiene cualquier atributo 
+Por ejemplo, el código siguiente simula que la clase Producto tiene cualquier atributo 
 que queramos usar.
 
 class Producto {

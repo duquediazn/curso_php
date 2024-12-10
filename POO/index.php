@@ -37,9 +37,9 @@ use POO\Otras\Saiyajin as OtroSaiyajin;
 
 $goku = new Saiyajin("Goku", 1000);
 /*Una vez creado un objeto, puedes utilizar el operador instanceof 
-para comprobar si es o nouna instancia de una clase determinada.
+para comprobar si es o no una instancia de una clase determinada.
 
-Además, a partir de PHP5 se incluyen una serie de funciones útiles para el desarrollo deaplicaciones utilizando POO:
+Además, a partir de PHP5 se incluyen una serie de funciones útiles para el desarrollo de aplicaciones utilizando POO:
 - get_class(objeto) : devuelve el nombre de la clase del objeto
 - class_exist(Clase) 
 - get_declared_classes() : devuelve un array con el nombre de las clases definidas. 
@@ -66,9 +66,9 @@ parámetros de manera correcta):
 
 $goku = new Saiyayin(nivel_pelea:1000, nombre:"Goku");
 
-Si no señalamos a qué atributo estamos asignando el valor, no sucedería 
-ningún error porque las variables no están tipadas, pero al no respetar
-el orden tendríamos nivel_pelea=Goku y nombre: 1000.
+Si no señalamos a qué atributo estamos asignando el valor y no tipamos las variables,
+no sucederá ningún error, pero al no respetar el orden tendríamos 
+nivel_pelea: Goku y nombre: 1000.
 */
 
 $vegeta = new Saiyajin("Vegeta", 950);
@@ -87,9 +87,7 @@ Si nombre fuera protected en la clase padre, esto daría error:
     echo $goku->nombre; //se accede desde la propia clase, pero no se puede acceder desde fuera.
     echo $gohan->nombre; //se hereda del padre, pero no se puede acceder desde fuera.
 Sí funcionaría:
-    echo $gohan->NivelDePelea(); //Para la versión sobreescrita en la clase hija
-porque accede a ese atributo nombre a través de una función pública de la propia clase.
-
+    echo $gohan->NivelDePelea(); 
 Como nombre es private, la clase hija no podría acceder al atributo nombre y por lo tanto
 no lo heredará. El método NivelDePelea() (sobrescrita) del hijo, aunque público, dará error ya que 
 tiene ese atributo restringido. Saludar() y NivelDePelea() (padre) sí funcionarán porque esos métodos 
