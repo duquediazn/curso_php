@@ -1,2 +1,3 @@
 <?php
-    setcookie("Idioma", "es", time()-60*60*24*365, "/", "localhost", false, true);
+//Para borrar una cookie, debes reestablecerla con tiempo negativo. 
+setcookie("Idioma", "es", time() - 60 * 60 * 24 * 365, "/", "localhost", false, true);
