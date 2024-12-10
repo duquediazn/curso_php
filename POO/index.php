@@ -147,7 +147,7 @@ todos los atributos en el nuevo objeto.
 
 /*
 Utilización de objetos (comparación simple y estricta): 
-A veces tienes dos objetos y quieres saber su relaciónexacta. Para eso, en
+A veces tienes dos objetos y quieres saber su relación exacta. Para eso, en
 PHP puedes utilizar los operadores "==" y "===".
 
 Si utilizas el operador de comparación "==", comparas los valores de los atributos de los
@@ -160,10 +160,10 @@ true sólo cuando las dos variables sean referencias al mismo objeto.
 
 /*
 Objetos en sesiones y bases de datos: 
-Todas las variablesalmacenan su información en memoria de una forma u otrasegún su tipo. 
-Los objetos, sin embargo, no tienen un único tipo. Cada objeto tendrá unosatributos u otros en 
-función de su clase. Por tanto, para almacenar los objetos en la sesióndel usuario, hace falta 
-convertirlos a un formato estándar. Este proceso se llamaserialización.
+Todas las variables almacenan su información en memoria de una forma u otra según su tipo. 
+Los objetos, sin embargo, no tienen un único tipo. Cada objeto tendrá unos atributos u otros en 
+función de su clase. Por tanto, para almacenar los objetos en la sesión del usuario, hace falta 
+convertirlos a un formato estándar. Este proceso se llama serialización.
 
 En PHP, para serializar un objeto se utiliza la función serialize(). 
 El resultado obtenido es un string que contiene un flujo de bytes, 
